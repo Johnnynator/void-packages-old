@@ -3351,3 +3351,5 @@ libkid3-gui.so.3.6.0 kid3-3.6.0_1
 libcfitsio.so.3 cfitsio-3.450_1
 libapparmor.so.1 libapparmor-2.12.0_1
 libcue.so.2 libcue-2.2.0_1
+libRakNetDLL.so RakNet-4.081_1
+libraknet.so.4.081 RakNet-4.081.1_1
