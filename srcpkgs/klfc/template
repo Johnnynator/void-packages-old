@@ -1,0 +1,23 @@
+# Template file for 'klfc'
+pkgname=klfc
+version=1.5.1
+revision=1
+hostmakedepends="cabal-install"
+short_desc="msth with Keyboards"
+maintainer="John <johnz@posteo.net>"
+license="GPL-3"
+homepage="https://github.com/39aldo39/klfc/"
+distfiles="https://github.com/39aldo39/klfc/archive/v${version}.tar.gz"
+checksum=b74f3d53af8de62a552cc56ff961a1ed6db66129b7c7872b68ff4f8026ba8810
+
+do_build() {
+	cabal sandbox init
+	cabal update
+	cabal install ${makejobs} --only-dependencies
+	cabal configure
+	cabal build ${makejobs}
+}
+
+do_install() {
+	vbin dist/build/klfc/klfc
+}
