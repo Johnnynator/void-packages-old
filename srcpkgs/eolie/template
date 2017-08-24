@@ -1,0 +1,23 @@
+# Template file for 'eolie'
+pkgname=eolie
+version=0.9.15
+revision=1
+#wrksrc=
+#create_wrksrc=yes
+#only_for_archs="i686 x86_64"
+build_style=gnu-configure
+#configure_args=""
+#make_build_args=""
+#make_install_args=""
+#conf_files=""
+#make_dirs="/var/log/dir 0755 root root"
+hostmakedepends="intltool itstool autoconf"
+makedepends="webkit2gtk-devel gtk+3-devel python-gobject-devel python3-devel
+ libgirepository-devel glib-devel"
+depends="ca-certificates hicolor-icon-theme desktop-file-utils python"
+short_desc="Web browser for GNOME"
+maintainer="John <johnz@posteo.net>"
+license="GPL-3"
+homepage="http://gnumdk.github.io/eolie-web"
+distfiles="https://github.com/gnumdk/eolie/releases/download/${version}/eolie-${version}.tar.xz"
+checksum=4d0e2386ce166d2a2ff071e832f75ead636371ac8986d9a27b05c11e6e6f9e3e
