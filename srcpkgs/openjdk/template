@@ -31,6 +31,7 @@ make_build_args="DEBUG_BINARIES=true docs all"
 hostmakedepends="pkg-config cpio unzip zip ca-certificates libressl"
 case "$XBPS_MACHINE" in
 	arm*) hostmakedepends+=" $(vopt_if oracle_bootstrap oracle-jdk-arm openjdk)";;
+	*-musl) hostmakedepends+=" $(vopt_if oracle_bootstrap oracle-jdk-musl)";;
 	*) hostmakedepends+=" $(vopt_if oracle_bootstrap oracle-jdk openjdk)";;
 esac
 makedepends="libXrender-devel libXtst-devel libXt-devel
