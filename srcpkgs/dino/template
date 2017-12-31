@@ -1,0 +1,23 @@
+# Template file for 'dino'
+pkgname=dino
+version=0.0
+revision=1
+#wrksrc=
+#create_wrksrc=yes
+#only_for_archs="i686 x86_64"
+build_style=cmake
+#configure_args=""
+#make_build_args=""
+#make_install_args=""
+#conf_files=""
+#make_dirs="/var/log/dir 0755 root root"
+hostmakedepends="vala pkg-config"
+makedepends="glib-devel gtk+3-devel libgee08-devel sqlite-devel
+ gpgme-devel libgcrypt-devel libsoup-devel"
+depends=""
+short_desc="Modern Jabber/XMPP Client using GTK+/Vala"
+maintainer="John <johnz@posteo.net>"
+license="GPL-3"
+homepage="https://github.com/dino/dino"
+distfiles="https://github.com/dino/dino/archive/0.0.tar.gz"
+checksum=a951b50559671ab30e74304ddc66c943405c8ad1bcbe4d77bef647a081fd0dbb
