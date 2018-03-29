@@ -1,0 +1,49 @@
+# Template file for 'citra'
+pkgname=citra
+version=0.0.0.20170329
+revision=1
+_commit="a567a924688453cf1d10bc9a4c5c954480f05fa9"
+_fmt_commit="4d35f94133ed14794e53c9f8627d047b408e0dc7"
+_dynarmic_commit="d1d4705364031512cb89333aebc00b8d75a2f732"
+_enet_commit="39a72ab1990014eb399cee9d538fd529df99c6a0"
+_soundtouch_commit="019d2089bbadf70d73ba85aa8ea51490b071262c"
+_boost_commit="7310c95e2320ed262b0600315fa2f762c4b6cc54"
+#build_wrksrc="citra-${_commit}"
+#create_wrksrc=yes
+build_style=cmake
+configure_args="-DENABLE_WEB_SERVICE=0"
+#make_build_args=""
+#make_install_args=""
+#conf_files=""
+#make_dirs="/var/log/dir 0755 root root"
+hostmakedepends="git"
+makedepends="SDL2-devel qt5-devel"
+depends=""
+short_desc="Nintendo 3DS Emulator"
+maintainer="John <johnz@posteo.net>"
+license="GPL-2.0-or-later"
+homepage="https://citra-emu.org"
+distfiles="https://github.com/citra-emu/citra/archive/${_commit}.tar.gz
+ https://github.com/fmtlib/fmt/archive/${_fmt_commit}.tar.gz
+ https://github.com/MerryMage/dynarmic/archive/${_dynarmic_commit}.tar.gz
+ https://github.com/lsalzman/enet/archive/${_enet_commit}.tar.gz
+ https://github.com/citra-emu/ext-soundtouch/archive/${_soundtouch_commit}.tar.gz
+ https://github.com/citra-emu/ext-boost/archive/${_boost_commit}.tar.gz"
+checksum="179f7fd1623cb477bea42c3dd1af03bfce4a8b6f72bbafeeddfbe687a4ee3dec
+ af779c9e7c8b2b3c34a096f2b363d9c1db648661487857fb1feec698ca7459a7
+ 88d4fdd2dcbeef0435523d0ee60533fe6a307794f9115a6eba77495a54c7a4d5
+ fc9b0eaf3f4d5a20ad138d8414a9586ca9ab5e8f44b33d9de4eacb40bbe07f0d
+ cc52bac647355a40628a39251052f992a4ed92ec9810d5765a89059b9f6ab00a
+ 540ed7b605fa67231f55a7ec0a9a08455c283935afdf8ec69b7de007e52da014"
+
+do_fetch() {
+	git clone https://github.com/citra-emu/citra --recursive ${wrksrc}
+}
+
+#post_extract() {
+#	mv fmt-${_fmt_commit}/* ${build_wrksrc}/externals/fmt/
+#	mv dynarmic-${_dynarmic_commit}/* ${build_wrksrc}/externals/dynarmic/
+#	mv enet-${_enet_commit}/* ${build_wrksrc}/externals/enet/
+#	mv ext-soundtouch-${_soundtouch_commit}/* ${build_wrksrc}/externals/soundtouch/
+#	mv ext-boost-${_boost_commit}/* ${build_wrksrc}/externals/boost/
+#}

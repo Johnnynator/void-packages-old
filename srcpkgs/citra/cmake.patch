@@ -1,0 +1,11 @@
+--- masterdir/builddir/citra-0.0.0.20170329/citra-a567a924688453cf1d10bc9a4c5c954480f05fa9/CMakeLists.txt	2018-03-29 15:45:25.000000000 +0200
++++ -	2018-03-29 16:29:02.242937031 +0200
+@@ -38,7 +38,7 @@
+         endif()
+     endforeach()
+ endfunction()
+-check_submodules_present()
++#check_submodules_present()
+ 
+ # Detect current compilation architecture and create standard definitions
+ # =======================================================================
