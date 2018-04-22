@@ -1,6 +1,6 @@
 # Template file for 'fsharp'
 pkgname=fsharp
-version=4.1.23
+version=4.1.33
 revision=1
 lib32disabled=yes
 build_style=gnu-configure
@@ -12,12 +12,8 @@ short_desc="F# compiler, core library and tools"
 maintainer="Wojciech Nawrocki <wjnawrocki@protonmail.com>"
 license="Apache-2.0"
 homepage="http://fsharp.org"
-distfiles="https://github.com/fsharp/fsharp/archive/$version.tar.gz"
-checksum=7878a95f012805c44ecedbd556f227dba5092e7a254ac602d026857e4b823152
-
-case "$XBPS_TARGET_MACHINE" in
-	*-musl) broken="https://s3.amazonaws.com/archive.travis-ci.org/jobs/211856891/log.txt"
-esac
+distfiles="https://github.com/mono/linux-packaging-fsharp/archive/upstream/${version}.tar.gz"
+checksum=b34dc9719eaebd7eec02aabc695927bd0ca1715e9cc0ce39575c4651a764808d
 
 pre_configure() {
 	autoreconf -fi
