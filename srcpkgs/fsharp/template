@@ -2,6 +2,7 @@
 pkgname=fsharp
 version=4.1.33
 revision=1
+wrksrc="linux-packaging-fsharp-upstream-${version}"
 lib32disabled=yes
 build_style=gnu-configure
 configure_args="--with-gacdir=/usr/lib/mono/gac"
