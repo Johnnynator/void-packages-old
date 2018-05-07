@@ -1,7 +1,7 @@
 # Template file for 'jhead'
 pkgname=jhead
 version=3.00
-revision=3
+revision=4
 build_style=gnu-makefile
 short_desc="Display and manipulate EXIF header of JPEG images"
 maintainer="Oliver Kiddle <okiddle@yahoo.co.uk>"
@@ -11,9 +11,31 @@ distfiles="${homepage}/jhead-${version}.tar.gz"
 checksum=88cc01da018e242fe2e05db73f91b6288106858dd70f27506c4989a575d2895e
 
 post_extract() {
-	sed -i -e 's,/local,,' -e '/CC.*-o/s/$/ $(LDFLAGS)/' makefile
+	chmod +w *
 }
-pre_install() {
-	mkdir -p ${DESTDIR}/usr/bin
+
+do_install() {
+	vbin jhead
 	vman jhead.1
+	vmkdir usr/lib
+	vcopy libjhead.so* usr/lib
+	for _f in *.h; do
+		vinstall $_f 644 usr/include
+	done
+}
+
+libjhead_package() {
+	short_desc="Jhead EXIF header library"
+	pkg_install() {
+		vmove usr/lib/*.so.*
+	}
+}
+
+libjhead-devel_package() {
+	short_desc="Jhead EXIF header library - development files"
+	depends="libjhead>=${version}_${revision}"
+	pkg_install() {
+		vmove usr/include
+		vmove usr/lib/*.so
+	}
 }
