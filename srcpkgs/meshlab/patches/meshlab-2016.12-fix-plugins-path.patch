@@ -1,0 +1,17 @@
+diff --git a/common/pluginmanager.cpp/ /common/pluginmanager.cpp
+index 5354055..9a523d4 100644
+--- a/common/pluginmanager.cpp
++++ meshlab/src//common/pluginmanager.cpp
+@@ -189,7 +189,11 @@ QString PluginManager::osDependentFileBaseName(const QString &plname)
+ 
+ QString PluginManager::getBaseDirPath()
+ {
+-  QDir/ aseDir(qApp->applicationDirPath());
++  #if defined(Q_OS_LINUX)
++  	QDir/ aseDir("/usr/share/meshlab");
++  #else
++	QDir/ aseDir(qApp->applicationDirPath());
++  #endif
+ 
+ #if defined(Q_OS_WIN)
+   // Windows:

@@ -1,0 +1,11 @@
+--- a/meshlabplugins/edit_align/align/AlignGlobal.h	2016-12-23 13:24:59.000000000 +0300
++++ meshlab/src//meshlabplugins/edit_align/align/AlignGlobal.h	2017-11-26 03:10:09.210116792 +0300
+@@ -115,7 +115,7 @@
+ 	Node *ChooseDormantWithMostActiveLink  ();
+   void MakeAllDormant();
+   void Clear();
+- / ool GlobalAlign(const std::map<int,std::string> &Names, 	const double epsilon, int maxiter,/ ool Rigid, FILE *elfp=0, CallBack * cb=DummyCallBack );
++ / ool GlobalAlign(const std::map<int,std::string> &Names, 	const double epsilon, int maxiter,/ ool Rigid, FILE *elfp=0, CallBackPos * cb=DummyCallBackPos );
+ 
+    / ool CheckGraph();
+ 

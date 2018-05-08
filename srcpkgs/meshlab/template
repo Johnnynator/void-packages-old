@@ -1,0 +1,32 @@
+# Template file for 'meshlab'
+pkgname=meshlab
+version=2016.12
+revision=1
+_vcglib_version=1.0.1
+#wrksrc=
+create_wrksrc=yes
+build_wrksrc=meshlab/src
+#only_for_archs="i686 x86_64"
+build_style=qmake
+configure_args="meshlab_mini.pro"
+#make_build_args=""
+#make_install_args=""
+#conf_files=""
+#make_dirs="/var/log/dir 0755 root root"
+hostmakedepends="qt5-qmake"
+makedepends="qt5-xmlpatterns-devel qt5-script-devel glu-devel
+ libjhead-devel glew-devel muparser-devel bzip2-devel"
+depends=""
+short_desc="Mesh processing system"
+maintainer="John <johnz@posteo.net>"
+license="GPL-3.0-only"
+homepage="http://www.meshlab.net"
+distfiles="http://github.com/cnr-isti-vclab/meshlab/archive/v${version}.tar.gz
+https://github.com/cnr-isti-vclab/vcglib/archive/v${_vcglib_version}.tar.gz"
+checksum="9fd26c669aecfb7039d7370fac918e5b104eb6d1e3ee15e2df1787ebb4406b89
+ 406e570637d3820810bf85fea7d8138ab8c70dfcb1be9941a0994ab3a793d1d0"
+
+post_extract() {
+	mv meshlab-${version} meshlab
+	mv vcglib-${_vcglib_version} vcglib
+}
