@@ -1,0 +1,16 @@
+# Template file for 'Lector'
+pkgname=Lector
+version=0.4
+revision=1
+noarch=yes
+build_style=python3-module
+pycompile_module="lector"
+hostmakedepends="python3-setuptools"
+makedepends="python-PyQt5-devel python3-devel"
+depends="python3-PyQt5 python3-BeautifulSoup4"
+short_desc="Qt based ebook reader"
+maintainer="John <johnz@posteo.net>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/BasioMeusPuga/Lector"
+distfiles="https://github.com/BasioMeusPuga/Lector/archive/${version}.tar.gz"
+checksum=c8deefc20fb3da98a327a893ce281e1efe5ee0c0a306d8cd19b44fd2e526649a
