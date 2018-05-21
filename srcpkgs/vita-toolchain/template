@@ -1,0 +1,27 @@
+# Template file for 'vita-toolchain'
+pkgname=vita-toolchain
+version=0.0.20180325
+revision=1
+commit=c15d514505532ddbd18f036b8ddc2527b4e7cd8c
+wrksrc="vita-toolchain-$commit"
+#create_wrksrc=yes
+#only_for_archs="i686 x86_64"
+build_style=cmake
+#configure_args=""
+#make_build_args=""
+#make_install_args=""
+#conf_files=""
+#make_dirs="/var/log/dir 0755 root root"
+hostmakedepends=""
+makedepends="libyaml-devel libzip-devel"
+depends=""
+short_desc="PlayStation Vita™ Toolchain"
+maintainer="John <johnz@posteo.net>"
+license="MIT"
+homepage="https://github.com/vitasdk/vita-toolchain"
+distfiles="https://github.com/vitasdk/vita-toolchain/archive/${commit}.tar.gz"
+checksum=5e3fdfda68666f40bba6334c300e7d82486e3bccaf18d61c6f8bf9a9f44fe4f5
+
+post_install() {
+	vinstall COPYING
+}
