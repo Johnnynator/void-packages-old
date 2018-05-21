@@ -1,0 +1,24 @@
+# Template file for 'VitaSDK'
+pkgname=VitaSDK
+version=0.0.20180325
+revision=1
+commit=9557b99dcf426c362453c93a0bac86424be99169
+wrksrc="buildscripts-${commit}"
+#create_wrksrc=yes
+#only_for_archs="i686 x86_64"
+build_style=cmake
+#configure_args=""
+#make_build_args=""
+#make_install_args=""
+#conf_files=""
+#make_dirs="/var/log/dir 0755 root root"
+hostmakedepends="git autoconf flex texinfo"
+makedepends=""
+depends=""
+short_desc="SDK for the PS Vita"
+maintainer="John <johnz@posteo.net>"
+license="MIT"
+homepage="https://github.com/vitasdk/buildscripts"
+distfiles="https://github.com/vitasdk/buildscripts/archive/${commit}.tar.gz"
+checksum=ac2ded4d0d02559138d758122215b4786adb6caa34917451a96617aca12c3e40
+nocross=yes
