@@ -9,7 +9,6 @@ license="GPL-2"
 homepage="https://bitbucket.org/inguma/bokken"
 distfiles="https://bitbucket.org/inguma/bokken/get/${version}.tar.gz"
 checksum=c888c241c9f2a9e0a91e8d10f8eb5f55323bd831280054940686877c49cd7947
-only_for_archs="i686 x86_64"
 
 makedepends="pygtk pygtksourceview radare2 r2-bindings"
 depends="${makedepends}"
