@@ -1,0 +1,28 @@
+# Template file for 'thedarkmod'
+pkgname=thedarkmod
+version=2.06
+revision=1
+create_wrksrc=yes
+build_style=scons
+#configure_args=""
+make_build_args="BUILD=release NOCONF=1"
+hostmakedepends="p7zip scons subversion m4"
+makedepends="glew-devel libopenal-devel boost-devel libjpeg-turbo-devel
+ libpng12-devel ffmpeg-devel libcurl-devel"
+short_desc="First-person stealth game inspired by the original Thief series"
+maintainer="John <johnz@posteo.net>"
+license="GPL-3"
+homepage="http://www.thedarkmod.com/"
+distfiles="http://www.thedarkmod.com/sources/thedarkmod.${version}.src.7z"
+checksum=60a95cfafce18cef2622a63ebdd3739090d399126bf267593d90de8811f23506
+
+case "$XBPS_TARGET_MACHINE" in
+	x86_64*) make_build_args+=" TARGET_ARCH=x64";;
+	i686*) make_build_args+=" TARGET_ARCH=x86";;
+	*) broken="Not Supported";;
+esac
+
+do_install() {
+	:
+	#IDK what and where we have to install stuff
+}

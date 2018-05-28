@@ -1,0 +1,83 @@
+--- sys/scons/SConscript.darkmod	2018-05-28 17:08:31.654400159 +0200
++++ -	2018-05-28 17:11:43.599213373 +0200
+@@ -45,27 +45,30 @@
+ local_env = g_env_game.Clone()
+ 
+ # greebo: Add all custom-built libraries
+-if (TARGET_ARCH == 'x86'):
+-	local_env.Append(LIBS = [
+-		File('#/linux/libcurl/libcurl.a'),
+-		File('#/linux/polarssl/libpolarssl.a'),
+-		File('#/linux/ffmpeg/libavformat.a'),
+-		File('#/linux/ffmpeg/libavcodec.a'),
+-		File('#/linux/ffmpeg/libavutil.a'),
+-		File('#/linux/ffmpeg/libswscale.a'),
+-		File('#/linux/ffmpeg/libswresample.a')
+-	])
+-if (TARGET_ARCH == 'x64'):
+-	local_env.Append(LIBS = [
+-		File('#/linux/libcurl/lib64/libcurl.a'),
+-		File('#/linux/polarssl/lib64/libpolarssl.a'),
+-		File('#/linux/ffmpeg/lib64/libavformat.a'),
+-		File('#/linux/ffmpeg/lib64/libavcodec.a'),
+-		File('#/linux/ffmpeg/lib64/libavutil.a'),
+-		File('#/linux/ffmpeg/lib64/libswscale.a'),
+-		File('#/linux/ffmpeg/lib64/libswresample.a')
+-	])
+-
++if ( '0' == '1' ):
++	if (TARGET_ARCH == 'x86'):
++		local_env.Append(LIBS = [
++			File('#/linux/libcurl/libcurl.a'),
++			File('#/linux/polarssl/libpolarssl.a'),
++			File('#/linux/ffmpeg/libavformat.a'),
++			File('#/linux/ffmpeg/libavcodec.a'),
++			File('#/linux/ffmpeg/libavutil.a'),
++			File('#/linux/ffmpeg/libswscale.a'),
++			File('#/linux/ffmpeg/libswresample.a')
++		])
++	if (TARGET_ARCH == 'x64'):
++		local_env.Append(LIBS = [
++			File('#/linux/libcurl/lib64/libcurl.a'),
++			File('#/linux/polarssl/lib64/libpolarssl.a'),
++			File('#/linux/ffmpeg/lib64/libavformat.a'),
++			File('#/linux/ffmpeg/lib64/libavcodec.a'),
++			File('#/linux/ffmpeg/lib64/libavutil.a'),
++			File('#/linux/ffmpeg/lib64/libswscale.a'),
++			File('#/linux/ffmpeg/lib64/libswresample.a')
++		])
++else:
++	local_env.Append( LIBS = [ 'curl', 'ssl' ] )
++	local_env.Append( LIBS = [ 'avformat', 'avcodec', 'avutil', 'swscale', 'swresample' ] )
+ # Add all standard libraries (taken from system)
+ local_env.Append( LIBS = [ 'X11', 'Xext', 'Xxf86vm' ] ) # 'Xxf86dga', 
+ #local_env.Append( LIBPATH = [ '/usr/X11R6/lib' ] )
+--- SConstruct	2018-05-28 18:21:47.596144604 +0200
++++ -	2018-05-28 20:40:20.975169263 +0200
+@@ -15,7 +15,7 @@
+ serialized=['CC', 'CXX', 'JOBS', 'BUILD', 'GL_HARDLINK',
+ 	'DEBUG_MEMORY', 'LIBC_MALLOC', 'ID_MCHECK', 'NOCURL',
+ 	'BUILD_ROOT', 'BASEFLAGS', 'SILENT', 'NO_GCH', 'OPENMP',
+-	'TARGET_ARCH' ]
++	'TARGET_ARCH', 'USE_SYSTEM_LIBS' ]
+ 
+ # ------------------------------------------------
+ 
+@@ -89,6 +89,9 @@
+ 
+ NOCURL (default 0)
+ 	set to 1 to disable usage of libcurl and http/ftp downloads feature
++
++USE_SYTEM_LIBS (default 0)
++	use System Libraries instead of the bundled ones
+ """
+ 
+ Help( help_string )
+@@ -136,6 +139,7 @@
+ NO_GCH = '0'
+ OPENMP = '0'
+ TARGET_ARCH = 'x86'
++USE_SYSTEM_LIBS = '0'
+ 
+ # end default settings ---------------------------
+ 

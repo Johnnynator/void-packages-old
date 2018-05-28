@@ -1,0 +1,47 @@
+--- framework/minizip/unzip.cpp	2018-05-27 21:25:32.000000000 +0200
++++ -	2018-05-28 18:25:55.438231302 +0200
+@@ -106,6 +106,9 @@
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include <string.h>
++#ifndef __GLIBC__
++#include <time.h>
++#endif
+ typedef unsigned char byte;
+ #define ID_TIME_T time_t
+ #include "../sys/sys_public.h" //"sys/platform.h"
+--- sys/sys_public.h	2018-05-27 21:25:41.000000000 +0200
++++ -	2018-05-28 18:28:04.850907362 +0200
+@@ -133,6 +133,10 @@
+ // Linux
+ #ifdef __linux__
+ 
++#ifndef __GLIBC__
++#include <time.h>
++#endif
++
+ #define BUILD_OS_ID					2
+ 
+ #ifdef __i386__
+--- sys/posix/posix_net.cpp	2018-05-27 21:25:41.000000000 +0200
++++ -	2018-05-28 18:45:11.684061402 +0200
+@@ -745,7 +745,7 @@
+ 		return -1;
+ 	}
+ 
+-#if defined(_GNU_SOURCE)	
++#if defined(__GLIBC__)	
+ 	// handle EINTR interrupted system call with TEMP_FAILURE_RETRY -  this is probably GNU libc specific
+ 	if ( ( nbytes = TEMP_FAILURE_RETRY ( write( fd, data, size ) ) ) == -1 ) {
+ #else
+--- sys/posix/posix_net.cpp	2018-05-28 18:45:12.818080963 +0200
++++ -	2018-05-28 18:46:07.028807734 +0200
+@@ -688,7 +688,7 @@
+ 		return -1;
+ 	}
+ 
+-#if defined(_GNU_SOURCE)
++#if defined(__GLIBC__)
+ 	// handle EINTR interrupted system call with TEMP_FAILURE_RETRY -  this is probably GNU libc specific
+ 	if ( ( nbytes = TEMP_FAILURE_RETRY( read( fd, data, size ) ) ) == -1 ) {
+ #else

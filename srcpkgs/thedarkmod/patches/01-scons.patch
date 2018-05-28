@@ -1,0 +1,14 @@
+--- SConstruct	2018-05-27 21:25:31.000000000 +0200
++++ -	2018-05-28 16:19:04.674687307 +0200
+@@ -300,11 +300,7 @@
+ 
+ g_env_base.Prepend(CPPPATH=['.'])
+ g_env_base.Append(CPPPATH = '#/include')
+-g_env_base.Append(CPPPATH = '#/include/zlib')
+-g_env_base.Append(CPPPATH = '#/include/libjpeg')
+-g_env_base.Append(CPPPATH = '#/include/libpng')
+ g_env_base.Append(CPPPATH = '#/include/devil')
+-g_env_base.Append(CPPPATH = '#/include/ffmpeg')
+ g_env_base.Append(CPPPATH = '#/')
+ 
+ g_env_base['CPPFLAGS'] += OPTCPPFLAGS
