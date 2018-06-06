@@ -1,0 +1,6 @@
+case "$ACTION" in
+pre)
+	rm -f usr/share/fonts/TTF/Symbola.ttf
+	rm -rf "usr/share/licenses/$PKGNAME"
+	;;
+esac

@@ -1,0 +1,16 @@
+# INSTALL
+DISTFILE="http://users.teilar.gr/~g1951d/Symbola.zip"
+LICENSEFILE="http://users.teilar.gr/~g1951d/License.pdf"
+BUILD_DIR="var/tmp/$PKGNAME.build"
+case "$ACTION" in
+post)
+	mkdir -p $BUILD_DIR
+	xbps-uhelper fetch "${DISTFILE}>$BUILD_DIR/$PKGNAME.zip"
+	xbps-uhelper fetch "${LICENSEFILE}>$BUILD_DIR/License.pdf"
+	cd "$BUILD_DIR"
+	unzip "${PKGNAME}.zip"
+	install -Dm0644 Symbola.ttf ../../../usr/share/fonts/TTF/Symbola.ttf
+	install -Dm0644 License.pdf "../../../usr/share/licenses/$PKGNAME/License.pdf"
+	rm -r "$BUILD_DIR"
+	;;
+esac
