@@ -2,7 +2,7 @@
 pkgname=RakNet
 version=4.081.1
 revision=1
-_commit="96db490e7e6bc503fa3cde56ac4fe48753a1ff30"
+_commit="269970a268bc3f22f55af427a3943448e9eabf63"
 wrksrc="${pkgname}-${_commit}"
 build_style=cmake
 hostmakedepends="pkg-config"
@@ -12,7 +12,7 @@ maintainer="John <johnz@posteo.net>"
 license="BSD-2"
 homepage="https://github.com/TES3MP/RakNet"
 distfiles="${homepage}/archive/${_commit}.tar.gz"
-checksum=d2b530768b91fe23e0b11ad2bb9fd625662b3565cbea279ccbe24ee60b6f07f5
+checksum=bdb8b5304fc028fd2cd6d25a7eb24be01de0399b5c7a5e20f258b0e9d63eb160
 
 do_install() {
 	vinstall build/lib/libraknet.so 755 usr/lib
